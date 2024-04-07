@@ -258,3 +258,12 @@ test('Returns a 200 code', async () => {
 
 go to terminal 
 type npx jest deleteHandlers.test.js to see if test passed. 
+
+Push Files to Github Repository (GET, POST, PUT, DELETE, README.md)
+make sure all js files are saved 
+check to see if server is updated 
+Use the following commands: 
+cd ~ sample-project
+cd hm07-qa-us
+git commit -am "Project 7" 
+git push 
