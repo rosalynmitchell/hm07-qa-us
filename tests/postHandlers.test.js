@@ -2,18 +2,47 @@
 const config = require('../config');
 
 const requestBody = {
-    // put your body here
+	"deliveryTime": 9,
+    "products": [
+        {
+            "id": 1,
+            "quantity": 1
+        },
+        {
+            "id": 4,
+            "quantity": 3
+        }
+    ]
 }
 
-test('', async () => {
+test('Status code returns 200', async () => {
     try {
-		const response = await fetch(`${config.API_URL}/your/endpoint`, {
+		const response = await fetch(`${config.API_URL}/everything-you-need/v1/calculate`, {
 			method: 'POST',
 			headers: {
 			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
 		});
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+
+
+
+test('Status code returns 201', async () => {
+	let actualStatuscode;
+    try {
+		const response = await fetch(`${config.API_URL}/api/v1/kits`, {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(requestBody)
+		});
+		actualStatuscode = response.status
 	} catch (error) {
 		console.error(error);
 	}
