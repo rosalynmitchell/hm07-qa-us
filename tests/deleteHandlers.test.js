@@ -2,23 +2,23 @@
 const config = require('../config');
 
 const requestBodyCart= {
-	"productsList": [
-        {
-            "id": 1,
-            "quantity": 2
-        },
-        {
-            "id": 5,
-            "quantity": 2
-        },
-        {
-            "id": 3,
-            "quantity": 1
-        },
-    ],
+		"productsList": [
+			{
+				"id": 1,
+				"quantity": 2
+			},
+			{
+				"id": 5,
+				"quantity": 2
+			},
+			{
+				"id": 3,
+				"quantity": 1
+			},
+		],
 };
 
-test('Should return a 200 code when deleting a cart', async () => {
+test('Should return a 200 code when deleting the cart', async () => {
 	let actualStatus;
     try {
 		const responseCart = await fetch(`${config.API_URL}/api/v1/orders`, {
