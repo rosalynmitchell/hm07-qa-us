@@ -1,27 +1,66 @@
 // eslint-disable-next-line no-undef
-const config = require('../config')
+const config = require('../config');
 
-test('Returns a 200 code', async () => {
-	let actualStatuscode;
+const requestBodyCart= {
+	"productsList": [
+        {
+            "id": 1,
+            "quantity": 2
+        },
+        {
+            "id": 5,
+            "quantity": 2
+        },
+        {
+            "id": 3,
+            "quantity": 1
+        },
+    ],
+};
+
+test('Should return a 200 code when deleting a cart', async () => {
+	let actualStatus;
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/kits/7`, {
+		const responseCart = await fetch(`${config.API_URL}/api/v1/orders`, {
+			method: "POST", 
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify(requestBodyCart),
+		});
+		const cart = await responseCart.json();
+		let cartID = cart["id"];
+		const response = await fetch(`${config.API_URL}/api/v1/orders/${cartID}`, {
 			method: 'DELETE',
 		});
-		actualStatuscode = response.status
+		actualStatus = response.status;
 	} catch (error) {
 		console.error(error);
 	}
 });
 
 
-test('Returns a 200 code', async () => {
-	let actualStatuscode;
+
+
+test('Response body should be "ok:true" when cart is deleted', async () => {
+	let responseBody;
     try {
-		const response = await fetch(`${config.API_URL}/api/v1/orders/3`, {
+		const responseCart = await fetch(`${config.API_URL}/api/v1/orders`, {
+			method: "POST", 
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify(requestBodyCart),
+		});
+		const cart = await responseCart.json();
+		let cartID = cart["id"];
+		responseBody = await fetch(`${config.API_URL}/api/v1/orders/${cartID}`, {
 			method: 'DELETE',
 		});
-		actualStatuscode = response.status
 	} catch (error) {
 		console.error(error);
 	}
+	const data = await responseBody.json();
+	expect(data).toEqual("ok.true");
 });
+

@@ -23,6 +23,7 @@ const requestBody = {
 	}
 
 test('Response body status code 200', async () => {
+	let actualReponseBody;
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/orders/1`, {
 			method: 'PUT',
@@ -31,6 +32,7 @@ test('Response body status code 200', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
+		actualReponseBody = response.status
 	} catch (error) {
 		console.error(error);
 	}
@@ -52,5 +54,6 @@ test('Status code returns a 200', async () => {
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualStatuscode).toBe(200)
 });
 

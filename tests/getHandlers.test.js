@@ -9,6 +9,7 @@ test('Returns a 200 code', async () => {
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualStatuscode).toBe(200)
 });
 
 
@@ -20,6 +21,7 @@ test('Response should contain....', async () => {
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualReponseBody).toBe(200)
 });
 
 

@@ -24,16 +24,18 @@ test('Status code returns 200', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
+		actualStatuscode = response.status
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualStatuscode).toBe(200)
 });
 
 
 
 
 test('Status code returns 201', async () => {
-	let actualStatuscode;
+	let actualReponseBody;
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/kits`, {
 			method: 'POST',
@@ -42,7 +44,7 @@ test('Status code returns 201', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
-		actualStatuscode = response.status
+		actualresponse = response.status
 	} catch (error) {
 		console.error(error);
 	}
