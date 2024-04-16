@@ -16,7 +16,7 @@ const requestBodyCart= {
 				"quantity": 1
 			},
 		],
-};
+	};
 
 test('Should return a 200 code when deleting the cart', async () => {
 	let actualStatus;
@@ -33,16 +33,17 @@ test('Should return a 200 code when deleting the cart', async () => {
 		const response = await fetch(`${config.API_URL}/api/v1/orders/${cartID}`, {
 			method: 'DELETE',
 		});
-		actualStatus = response.status;
+		actualStatus = response.status
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualStatusCode).toBe(200);
 });
 
 
 
 
-test('Response body should be "ok:true" when cart is deleted', async () => {
+test('Response body should be "ok.true" when cart is deleted', async () => {
 	let responseBody;
     try {
 		const responseCart = await fetch(`${config.API_URL}/api/v1/orders`, {
